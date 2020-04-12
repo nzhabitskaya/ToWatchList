@@ -1,0 +1,2 @@
+rootProject.name='ToWatchList'
+include ':app'
