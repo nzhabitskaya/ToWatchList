@@ -1,9 +1,10 @@
 package com.mobile.android.chameapps.towatchlist.application
 
 import androidx.lifecycle.ViewModelProvider
+import com.mobile.android.chameapps.towatchlist.factory.di.RepositoryModule
+import com.mobile.android.chameapps.towatchlist.factory.di.ViewModelFactoryModule
 import com.mobile.android.chameapps.towatchlist.room.di.RoomModule
 import com.mobile.android.chameapps.towatchlist.ui.home.HomeFragment
-import com.mobile.android.chameapps.towatchlist.ui.home.di.ViewModelFactoryModule
 import dagger.Component
 import javax.inject.Singleton
 
@@ -12,7 +13,7 @@ import javax.inject.Singleton
  */
 
 @Singleton
-@Component(modules = [ApplicationModule::class, RoomModule::class, ViewModelFactoryModule::class])
+@Component(modules = [ApplicationModule::class, RoomModule::class, RepositoryModule::class, ViewModelFactoryModule::class])
 interface AppComponent {
 
     val application: MyApplication?

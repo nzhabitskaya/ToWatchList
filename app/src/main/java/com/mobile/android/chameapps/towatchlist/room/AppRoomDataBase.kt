@@ -9,7 +9,7 @@ import com.mobile.android.chameapps.towatchlist.room.dao.ItemsDao
     entities = [Item::class],
     version = 1
 )
-abstract class AppDatabase : RoomDatabase() {
+abstract class AppRoomDataBase : RoomDatabase() {
 
     abstract fun itemsDao(): ItemsDao?
 }

@@ -16,7 +16,7 @@ class MyApplication : Application() {
         if (app.component == null) {
             app.component = DaggerAppComponent.builder()
                 .applicationModule(ApplicationModule(instance!!))
-                .roomModule(RoomModule(instance!!))
+                .roomModule(RoomModule())
                 .build()
         }
         return app.component
