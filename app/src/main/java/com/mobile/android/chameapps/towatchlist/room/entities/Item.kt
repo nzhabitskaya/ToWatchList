@@ -1,4 +1,4 @@
-package com.mobile.android.chameapps.towatchlist.entities
+package com.mobile.android.chameapps.towatchlist.room.entities
 
 import androidx.room.Entity
 import androidx.room.Index

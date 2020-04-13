@@ -4,6 +4,7 @@ import androidx.room.Room
 import com.mobile.android.chameapps.towatchlist.application.MyApplication
 import com.mobile.android.chameapps.towatchlist.room.AppRoomDataBase
 import com.mobile.android.chameapps.towatchlist.room.dao.ItemsDao
+import com.mobile.android.chameapps.towatchlist.room.repository.ItemsRepository
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -28,5 +29,13 @@ class RoomModule {
     @Provides
     fun providesItemsDao(database: AppRoomDataBase): ItemsDao? {
         return database.itemsDao()
+    }
+
+    @Singleton
+    @Provides
+    fun providesItemsRepository(itemsDao: ItemsDao?): ItemsRepository {
+        return ItemsRepository(
+            itemsDao!!
+        )
     }
 }

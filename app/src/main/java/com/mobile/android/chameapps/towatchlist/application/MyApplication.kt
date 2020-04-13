@@ -1,29 +1,25 @@
 package com.mobile.android.chameapps.towatchlist.application
 
+import android.app.Activity
 import android.app.Application
-import android.content.Context
-import com.mobile.android.chameapps.towatchlist.room.di.RoomModule
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasActivityInjector
+import javax.inject.Inject
 
-class MyApplication : Application() {
-    private var component: AppComponent? = null
+class MyApplication : Application(), HasActivityInjector {
+
+    @Inject
+    lateinit var dispatchingActivityInjector: DispatchingAndroidInjector<Activity>
+
     override fun onCreate() {
         super.onCreate()
-        instance = this
+
+        DaggerApplicationComponent.builder()
+            .application(this)
+            .build()
+            .inject(this)
     }
 
-    fun getAppComponent(context: Context): AppComponent? {
-        val app = context.applicationContext as MyApplication
-        if (app.component == null) {
-            app.component = DaggerAppComponent.builder()
-                .applicationModule(ApplicationModule(instance!!))
-                .roomModule(RoomModule())
-                .build()
-        }
-        return app.component
-    }
-
-    companion object {
-        var instance: MyApplication? = null
-            private set
-    }
+    override fun activityInjector(): AndroidInjector<Activity> = dispatchingActivityInjector
 }

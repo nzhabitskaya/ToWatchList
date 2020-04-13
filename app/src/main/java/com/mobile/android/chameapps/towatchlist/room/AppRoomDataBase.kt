@@ -2,7 +2,7 @@ package com.mobile.android.chameapps.towatchlist.room
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.mobile.android.chameapps.towatchlist.entities.Item
+import com.mobile.android.chameapps.towatchlist.room.entities.Item
 import com.mobile.android.chameapps.towatchlist.room.dao.ItemsDao
 
 @Database(

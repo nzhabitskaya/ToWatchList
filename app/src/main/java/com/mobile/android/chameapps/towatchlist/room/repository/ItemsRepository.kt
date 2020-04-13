@@ -1,8 +1,8 @@
-package com.mobile.android.chameapps.towatchlist.repository
+package com.mobile.android.chameapps.towatchlist.room.repository
 
 import android.os.AsyncTask
 import androidx.lifecycle.LiveData
-import com.mobile.android.chameapps.towatchlist.entities.Item
+import com.mobile.android.chameapps.towatchlist.room.entities.Item
 import com.mobile.android.chameapps.towatchlist.room.dao.ItemsDao
 
 class ItemsRepository(private val itemsDao: ItemsDao) {
@@ -14,7 +14,9 @@ class ItemsRepository(private val itemsDao: ItemsDao) {
     }
 
     fun insert(note: Item) {
-        val insertNoteAsyncTask = InsertNoteAsyncTask(itemsDao).execute(note)
+        val insertNoteAsyncTask = InsertNoteAsyncTask(
+            itemsDao
+        ).execute(note)
     }
 
     fun deleteAllItems() {
